@@ -1,14 +1,20 @@
 import { Fragment } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import NotesPage from "./pages/NotesPage";
+import NotePage from "./pages/NotePage";
 import "./App.css";
 
 function App() {
   return (
     <Fragment>
-      <h1>Helo World From react notes App</h1>
-      <Header />
-      <NotesPage/>
+      <Router>
+        <Header />
+        <Routes>
+          <Route exact path="/" element={<NotesPage />} />
+          <Route path="/note/:id" element={<NotePage />} />
+        </Routes>
+      </Router>
     </Fragment>
   );
 }
